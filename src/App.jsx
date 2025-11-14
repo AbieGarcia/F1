@@ -8,6 +8,25 @@ function App() {
 
   return (
     <>
+      <div className="header">
+        <div className="logo">
+        <img src="../formula-1-logo.png" />
+            <h2 className="titulo_logo"> Fromula1 </h2>
+        </div>
+        <div className="menu">
+            <a>Home</a>
+            <a>Drivers</a>
+            <a>Constructors</a>
+            <a>Fantasy</a>
+            <a>LOG IN </a>
+            <img src="formula-1-logo.png" width="60" height="44"/>
+            </div>
+        <div className="icons">
+            
+        </div>
+    </div>
+
+
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -25,9 +44,6 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
