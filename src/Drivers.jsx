@@ -1,31 +1,61 @@
 import { useState } from 'react'
 import './App.css'
+import './Drivers.css'
 import PIA from './assets/OscarPiastri.png';
+import VER from './assets/Verstappen.png';
+import LEC from './assets/Leclerc.png';
 
 function Drivers() {
     const [count, setCount] = useState(0)
 
     return (
         <>
-            <div className='Title'><h1>Drivers</h1></div>
-            <input type='text' placeholder='Look for a driver...'></input>
+            <body>
+                <div className='cont1'>
+                    <h1 className='title' id='drivers_title'>Drivers</h1>
+                    <input type='text' placeholder='Look for a driver...' />
+                </div>
 
-            <div className='ContenedorCards'>
+                <div className='ContenedorCards'>
 
-                <div className='DriverCard' id='McLaren'>
-                    <img src={PIA}></img>
-                    <div className='DriverInfo'>
-                        <div className='DriverName'>
-                            <h3>Oscar Piasrti</h3>
-                            <div className='DriverTeam'>
-                                <p>McLaren</p>
+                    <div className='DriverCard' id='McLaren'>
+                        <img className='imgDriver' src={PIA}></img>
+                        <div className='DriverInfo'>
+                            <div className='DriverName'>
+                                <h3>Oscar</h3>
+                                <h3 id='Surname'>Piastri</h3>
+                                <p className='DriverTeam'>McLaren</p>
                             </div>
                             <h2>81</h2>
                         </div>
                     </div>
-                </div>
 
-            </div>
+                    <div className='DriverCard' id='RedBull'>
+                        <img className='imgDriver' src={VER}></img>
+                        <div className='DriverInfo'>
+                            <div className='DriverName'>
+                                <h3>Max</h3>
+                                <h3 id='Surname'>Verstappen</h3>
+                                <p className='DriverTeam'>Red Bull</p>
+                            </div>
+                            <h2>1</h2>
+                        </div>
+                    </div>
+
+                    <div className='DriverCard' id='Ferrari'>
+                        <img className='imgDriver' src={LEC}></img>
+                        <div className='DriverInfo'>
+                            <div className='DriverName'>
+                                <h3>Charles</h3>
+                                <h3 id='Surname'>Leclerc</h3>
+                                <p className='DriverTeam'>Ferrari</p>
+                            </div>
+                            <h2>16</h2>
+                        </div>
+                    </div>
+
+                </div>
+            </body>
 
         </>
     )

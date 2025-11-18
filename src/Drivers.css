@@ -1,0 +1,93 @@
+.cont1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.DriverCard {
+    display: flex;
+    flex-direction: column;
+    width: 414px;
+    height: 522px;
+    border-radius: 10px;
+    padding-top: 20px;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+#McLaren {
+    background: linear-gradient(to bottom right, #BC2803, #FF8E1D);
+}
+
+#RedBull {
+    background: linear-gradient(0deg, rgba(46, 78, 232, 0.80) 39.42%, rgba(0, 0, 0, 0.80) 78.85%), #2E4EE8;
+}
+
+#Ferrari {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(212, 0, 0, 0.80) 63.46%), #FF3838;
+}
+
+.imgDriver {
+    margin-left: 16px;
+    margin-right: 16px;
+    width: 381px;
+    height: 272px;
+}
+
+.DriverInfo {
+    display: flex;
+    flex-direction: row;
+    margin-left: 25px;
+    gap: 40px;
+}
+
+.DriverTeam {
+    background-color: #ffff;
+    border-radius: 10px;
+    color: #000;
+    font-size: 30px;
+    width: 173px;
+    padding-left: 17px;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+    stroke-width: 1px;
+    stroke: rgba(0, 0, 0, 0.00);
+}
+
+h3 {
+    font-family: Roboto, sans-serif;
+    color: black;
+    font-size: 45px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+h2 {
+    font-family: Roboto, sans-serif;
+    color: #000;
+    font-size: 100px;
+    margin-top: 20px;
+}
+
+input {
+    background-color: #F2F2F2;
+    border-radius: 9px;
+    border: 10px;
+    border-color: #000;
+}
+
+#Surname {
+    margin-top: -60px;
+}
+
+
+.ContenedorCards {
+    display: flex;
+    padding-left: 2%;
+    padding-right: 2%;
+    gap: 20px;
+}
+
+#drivers_title {
+    width: 270px;
+    height: 50px;
+}
