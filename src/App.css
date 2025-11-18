@@ -1,5 +1,32 @@
+@font-face {
+  font-family: 'mono';
+  src: url('./assets/mono.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto_mono';
+  src: url('./assets/Roboto_mono.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
 body {
   background-color: #ffff;
+  font-family: 'mono', sans-serif;
+}
+
+.title {
+  background-color: #FF3838;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  color: #FFFAFA;
+  text-align: center;
+  font-family: 'roboto_mono';
+  font-size: 270%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
 }
 
 .header {
@@ -7,6 +34,7 @@ body {
   flex-direction: row;
   width: 100vw;
   height: 12vh;
+  z-index: 1;
   background-color: #2F2F2F;
   position: fixed;
   top: 0;
