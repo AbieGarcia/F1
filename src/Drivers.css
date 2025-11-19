@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 70px;
+    margin-bottom: 40px;
 }
 
 .DriverCard {
@@ -73,6 +74,9 @@ input {
     border-radius: 9px;
     border: 10px;
     border-color: #000;
+    width: 60%;
+    height: 30px;
+    padding-left: 20px;
 }
 
 #Surname {
@@ -82,9 +86,11 @@ input {
 
 .ContenedorCards {
     display: flex;
+    width: 95vw;
     padding-left: 2%;
     padding-right: 2%;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 #drivers_title {
