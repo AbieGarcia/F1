@@ -118,11 +118,14 @@ input {
 
 .ContenedorCards {
     display: flex;
+    align-items: center;
+    justify-content: center;
     width: 95vw;
     padding-left: 2%;
     padding-right: 2%;
     gap: 20px;
     flex-wrap: wrap;
+    padding-bottom: 50px;
 }
 
 #drivers_title {
