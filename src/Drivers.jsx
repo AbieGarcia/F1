@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import './Drivers.css'
 import PIA from './assets/OscarPiastri.png';
@@ -23,15 +23,58 @@ import BOR from './assets/Bortoleto.png';
 import HUL from './assets/Nico.png';
 
 function Drivers() {
-    const [count, setCount] = useState(0)
+    const [drivers, setDrivers] = useState([]);
+    const [query, setQuery] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [selectedDriver, setSelectedDriver] = useState(null);
+
+    useEffect(() => {
+        async function fetchDrivers() {
+            setLoading(true);
+            setError('');
+            try {
+                const response = await fetch('https://f1api.dev/api/current/drivers-championship');
+                if (!response.ok) throw new Error('No se pudieron obtener los datos');
+                const DriversListData = await response.json();
+
+                const DriversDetailsArray = await Promise.all(
+                    DriversListData.drivers_championship.map(async (d) => {
+                        return {
+                            name: d.driver.name,
+                            surname: d.driver.surname,
+                            team: d.team.teamName,
+                            number: d.driver.number,
+                            nationality: d.driver.nationality,
+                            wins: d.wins,
+                            points: d.points,
+                            position: d.position,
+                        };
+                    })
+                );
+
+                setDrivers(DriversDetailsArray);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchDrivers();
+    }, []);
+
+    const filteredDrivers = drivers.filter((driver) => driver.surname.toLowerCase().includes(query.toLowerCase()));
 
     return (
         <>
             <body>
                 <div className='cont1'>
                     <h1 className='title' id='drivers_title'>Drivers</h1>
-                    <input type='text' placeholder='Look for a driver...' />
+                    <input type='text' placeholder='Look for a driver...' value={query} onChange={(e) => setQuery(e.target.value)} />
                 </div>
+
+                {loading && <p className='loading'>Loading Drivers...</p>}
+                {error && <p className='error'> Error: {error}</p>}
 
                 <div className='ContenedorCards'>
 
