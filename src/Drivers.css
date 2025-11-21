@@ -168,7 +168,6 @@ input {
 }
 
 .modal {
-    background: white;
     border-radius: 10px;
     padding: 25px;
     max-width: 1200px;
@@ -179,4 +178,210 @@ input {
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
     animation: aparecer 0.3s ease;
     color: #000;
+}
+
+.modal.mclaren {
+    background: linear-gradient(to bottom right, #BC2803, #FF8E1D);
+}
+
+.modal.red_bull {
+    background: linear-gradient(0deg, rgba(46, 78, 232, 0.80) 39.42%, rgba(0, 0, 0, 0.80) 78.85%), #2E4EE8;
+}
+
+.modal.rb {
+    background: linear-gradient(0deg, rgba(46, 78, 232, 0.80) 39.42%, rgba(0, 0, 0, 0.80) 78.85%), #2E4EE8;
+}
+
+.modal.williams {
+    background: linear-gradient(0deg, rgba(20, 122, 255, 0.8) 39.42%, rgba(0, 0, 0, 0.80) 78.85%), #2e8ee8;
+}
+
+.modal.ferrari {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(212, 0, 0, 0.80) 63.46%), #FF3838;
+}
+
+.modal.haas {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(212, 0, 53, 0.8) 63.46%), #FF3838;
+}
+
+.modal.alpine {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(255, 105, 217, 0.8) 63.46%), #ff69da;
+}
+
+.modal.aston_martin {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(0, 143, 100, 0.8) 63.46%), #01804b;
+}
+
+.modal.sauber {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(2, 211, 30, 0.8) 63.46%), #08b408;
+}
+
+.modal.mercedes {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(25, 231, 145, 0.8) 63.46%), #3ac98d;
+}
+
+.modalName {
+    font-family: Roboto, sans-serif;
+    color: white;
+    font-weight: 300;
+    justify-self: center;
+    position: relative;
+    top: -70px;
+}
+
+.close-btn {
+    background-color: white;
+    color: #000;
+}
+
+.sectInfo {
+    display: flex;
+    flex-direction: row;
+    margin-top: -80px;
+    gap: 40px;
+}
+
+.info1 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.sectTeam {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    filter: drop-shadow(13px 13px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+    align-items: center;
+
+}
+
+.sectNum {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    filter: drop-shadow(13px 13px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+    align-items: center;
+
+}
+
+.sectDriverNum {
+    font-size: 120px;
+    font-weight: 600;
+    font-family: Roboto, sans-serif;
+    margin-top: -40px;
+}
+
+.sectDriverNum.mclaren {
+    color: #d87402;
+}
+
+.sectDriverNum.red_bull {
+    color: #030d9c;
+}
+
+.sectDriverNum.rb {
+    color: #0714ce;
+}
+
+.sectDriverNum.williams {
+    color: #035f9c;
+}
+
+.sectDriverNum.ferrari {
+    color: #A80101;
+}
+
+.sectDriverNum.haas {
+    color: #aa022c;
+}
+
+.sectDriverNum.alpine {
+    color: #a80284;
+}
+
+.sectDriverNum.aston_martin {
+    color: #017e3f;
+}
+
+.sectDriverNum.sauber {
+    color: #039c29;
+}
+
+.sectDriverNum.mercedes {
+    color: #015846;
+}
+
+.info2 {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.info2-p {
+    background: white;
+    border-radius: 9px;
+    filter: drop-shadow(13px 13px 4px rgba(0, 0, 0, 0.25));
+    width: 796px;
+    height: 40px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.teamImg.mclaren {
+    margin-top: -30px;
+    width: 90%;
+}
+
+.teamImg.red_bull {
+    width: 90%;
+}
+
+.teamImg.rb {
+    margin-top: -10px;
+    width: 40%;
+}
+
+.teamImg.williams {
+    margin-top: -10px;
+    width: 50%;
+}
+
+.teamImg.ferrari {
+    margin-top: -50px;
+    width: 67%;
+}
+
+.teamImg.haas {
+    margin-top: -10px;
+    width: 50%;
+}
+
+.teamImg.alpine {
+    margin-top: -70px;
+    width: 80%;
+}
+
+.teamImg.aston_martin {
+    margin-top: -100px;
+    width: 90%;
+}
+
+.teamImg.sauber {
+    margin-top: -20px;
+    width: 45%;
+}
+
+.teamImg.mercedes {
+    margin-top: -80px;
+    width: 70%;
 }
