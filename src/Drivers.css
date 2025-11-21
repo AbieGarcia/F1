@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 70px;
+    padding-top: 6%;
     margin-bottom: 40px;
 }
 
@@ -14,45 +14,53 @@
     border-radius: 10px;
     padding-top: 20px;
     filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+    transition: all 0.3s ease;
 }
 
-#McLaren {
+.DriverCard:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.9));
+    cursor: pointer;
+
+}
+
+.DriverCard.mclaren {
     background: linear-gradient(to bottom right, #BC2803, #FF8E1D);
 }
 
-#RedBull {
+.DriverCard.red_bull {
     background: linear-gradient(0deg, rgba(46, 78, 232, 0.80) 39.42%, rgba(0, 0, 0, 0.80) 78.85%), #2E4EE8;
 }
 
-#RB {
+.DriverCard.rb {
     background: linear-gradient(0deg, rgba(46, 78, 232, 0.80) 39.42%, rgba(0, 0, 0, 0.80) 78.85%), #2E4EE8;
 }
 
-#Williams {
+.DriverCard.williams {
     background: linear-gradient(0deg, rgba(20, 122, 255, 0.8) 39.42%, rgba(0, 0, 0, 0.80) 78.85%), #2e8ee8;
 }
 
-#Ferrari {
+.DriverCard.ferrari {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(212, 0, 0, 0.80) 63.46%), #FF3838;
 }
 
-#Haas {
+.DriverCard.haas {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(212, 0, 53, 0.8) 63.46%), #FF3838;
 }
 
-#Alpine {
+.DriverCard.alpine {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(255, 105, 217, 0.8) 63.46%), #ff69da;
 }
 
-#AstonMartin {
+.DriverCard.aston_martin {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(0, 143, 100, 0.8) 63.46%), #01804b;
 }
 
-#Sauber {
+.DriverCard.sauber {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(2, 211, 30, 0.8) 63.46%), #08b408;
 }
 
-#Mercedes {
+.DriverCard.mercedes {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 24.52%, rgba(25, 231, 145, 0.8) 63.46%), #3ac98d;
 }
 
@@ -63,9 +71,15 @@
     height: 272px;
 }
 
-.DriverInfo {
+.DriverSec {
     display: flex;
     flex-direction: row;
+    gap: 20px;
+}
+
+.DriverInfo {
+    display: flex;
+    flex-direction: column;
     margin-left: 25px;
     gap: 40px;
 }
@@ -75,11 +89,12 @@
     border-radius: 10px;
     color: #000;
     font-size: 30px;
-    width: 173px;
+    width: 350px;
     padding-left: 17px;
     filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
     stroke-width: 1px;
     stroke: rgba(0, 0, 0, 0.00);
+    margin-top: -150px;
 }
 
 #teamA {
@@ -109,6 +124,8 @@ input {
     width: 60%;
     height: 30px;
     padding-left: 20px;
+    margin-bottom: 40px;
+    margin-left: 20%;
 }
 
 #Surname {
@@ -131,4 +148,35 @@ input {
 #drivers_title {
     width: 270px;
     height: 50px;
+    margin-top: 8%;
+    justify-self: center;
+}
+
+
+/*..............MODAL...............*/
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    max-width: 1200px;
+    width: 90%;
+    max-height: 80vh;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    animation: aparecer 0.3s ease;
+    color: #000;
 }
