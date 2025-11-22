@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import f1Logo from './assets/formula-1-logo.png';
 import settings from './assets/Settings.png';
 import Drivers from './Drivers';
+import Login from './login';
+import Register from './Register';
 import './App.css';
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
           }
         />
         <Route path="/drivers" element={<Drivers />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </>
   );

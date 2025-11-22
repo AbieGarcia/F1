@@ -179,81 +179,78 @@ function Drivers() {
     const filteredDrivers = drivers.filter((driver) => driver.surname.toLowerCase().includes(query.toLowerCase()));
 
     return (
-        <>
-            <body>
-                <h1 className='title' id='drivers_title'>Drivers</h1>
-                <input type='text' placeholder='Look for a driver...' value={query} onChange={(e) => setQuery(e.target.value)} />
+        <div className='body'>
+            <h1 className='title' id='drivers_title'>Drivers</h1>
+            <input className='inputD' type='text' placeholder='Look for a driver...' value={query} onChange={(e) => setQuery(e.target.value)} />
 
-                {loading && <p className='loading'>Loading Drivers...</p>}
-                {error && <p className='error'> Error: {error}</p>}
+            {loading && <p className='loading'>Loading Drivers...</p>}
+            {error && <p className='error'> Error: {error}</p>}
 
-                <div className='ContenedorCards'>
+            <div className='ContenedorCards'>
 
-                    {filteredDrivers.map((driver) => {
-                        const sname = `${driver.shortName}`;
-                        const asset = driversAssets[sname];
+                {filteredDrivers.map((driver) => {
+                    const sname = `${driver.shortName}`;
+                    const asset = driversAssets[sname];
 
-                        return (
-                            <div className={`DriverCard ${driver.teamID}`} onClick={() => setSelectedDriver(driver)}>
-                                <img className='imgDriver' src={asset?.img}></img>
-                                <div className='DriverInfo'>
+                    return (
+                        <div className={`DriverCard ${driver.teamID}`} onClick={() => setSelectedDriver(driver)}>
+                            <img className='imgDriver' src={asset?.img}></img>
+                            <div className='DriverInfo'>
 
-                                    <div className='DriverSec'>
-                                        <div className='DriverName'>
-                                            <h3> {driver.name} </h3>
-                                            <h3 id='Surname'> {driver.surname} </h3>
-                                        </div>
-                                        <h2> {driver.number} </h2>
+                                <div className='DriverSec'>
+                                    <div className='DriverName'>
+                                        <h3> {driver.name} </h3>
+                                        <h3 id='Surname'> {driver.surname} </h3>
                                     </div>
-                                    <p className='DriverTeam'> {driver.team} </p>
+                                    <h2> {driver.number} </h2>
                                 </div>
+                                <p className='DriverTeam'> {driver.team} </p>
                             </div>
-                        );
-                    }
-                    )}
-
-                </div>
-
-                {filteredDrivers.length === 0 && !loading && !error && (
-                    <p>No se encontraron resultados</p>
-                )}
-
-                {/*Modal de detalles*/}
-                {selectedDriver && (
-                    <div className='modal-overlay' onClick={() => setSelectedDriver(null)}>
-                        <div className={`modal ${selectedDriver.teamID}`} onClick={(e) => e.stopPropagation()}>
-                            <button className='close-btn' onClick={() => setSelectedDriver(null)}> X </button>
-
-                            <h1 className='modalName'>{`${selectedDriver.name} ${selectedDriver.surname}`}</h1>
-
-                            <div className='sectInfo'>
-
-                                <div className='info1'>
-                                    <div className='sectTeam'>
-                                        <p>Team: {selectedDriver.team}</p>
-                                        <img className={`teamImg ${selectedDriver.teamID}`} src={driversAssets[selectedDriver.shortName]?.team}></img>
-                                    </div>
-                                    <div className='sectNum'>
-                                        <p>Number:</p>
-                                        <h3 className={`sectDriverNum ${selectedDriver.teamID}`}>{selectedDriver.number}</h3>
-                                    </div>
-                                </div>
-
-                                <div className='info2'>
-                                    <p className='info2-p'>Nationality: {selectedDriver.nationality} </p>
-                                    <p className='info2-p'>Season wins: {selectedDriver.wins} </p>
-                                    <p className='info2-p'>Season points: {selectedDriver.points} </p>
-                                    <p className='info2-p'>Current position: {selectedDriver.position} </p>
-                                </div>
-                            </div>
-
                         </div>
-                    </div>
+                    );
+                }
                 )}
 
-            </body>
+            </div>
 
-        </>
+            {filteredDrivers.length === 0 && !loading && !error && (
+                <p>No se encontraron resultados</p>
+            )}
+
+            {/*Modal de detalles*/}
+            {selectedDriver && (
+                <div className='modal-overlay' onClick={() => setSelectedDriver(null)}>
+                    <div className={`modal ${selectedDriver.teamID}`} onClick={(e) => e.stopPropagation()}>
+                        <button className='close-btn' onClick={() => setSelectedDriver(null)}> X </button>
+
+                        <h1 className='modalName'>{`${selectedDriver.name} ${selectedDriver.surname}`}</h1>
+
+                        <div className='sectInfo'>
+
+                            <div className='info1'>
+                                <div className='sectTeam'>
+                                    <p>Team: {selectedDriver.team}</p>
+                                    <img className={`teamImg ${selectedDriver.teamID}`} src={driversAssets[selectedDriver.shortName]?.team}></img>
+                                </div>
+                                <div className='sectNum'>
+                                    <p>Number:</p>
+                                    <h3 className={`sectDriverNum ${selectedDriver.teamID}`}>{selectedDriver.number}</h3>
+                                </div>
+                            </div>
+
+                            <div className='info2'>
+                                <p className='info2-p'>Nationality: {selectedDriver.nationality} </p>
+                                <p className='info2-p'>Season wins: {selectedDriver.wins} </p>
+                                <p className='info2-p'>Season points: {selectedDriver.points} </p>
+                                <p className='info2-p'>Current position: {selectedDriver.position} </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            )}
+
+        </div>
     )
 }
 

@@ -12,7 +12,10 @@
   font-style: normal;
 }
 
-body {
+.body {
+  display: flex;
+  flex-direction: column;
+  width: 99vw;
   background-color: #ffff;
   font-family: 'mono', sans-serif;
 }
@@ -55,6 +58,7 @@ body {
   gap: 15px;
   align-items: center;
   justify-self: end;
+  padding-right: 2%;
 }
 
 .nav-link {
