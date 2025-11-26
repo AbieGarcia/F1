@@ -6,6 +6,7 @@ import settings from './assets/Settings.png';
 import Drivers from './Drivers';
 import Login from './login';
 import Register from './Register';
+import Fantasy from './Fantasy';
 import './App.css';
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
         <Route path="/drivers" element={<Drivers />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/fantasy" element={<Fantasy />} />
+
       </Routes>
     </>
   );
