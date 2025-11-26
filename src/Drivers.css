@@ -154,6 +154,19 @@ h2 {
     margin-bottom: 70px;
 }
 
+#cName {
+    text-align: center;
+    align-self: center;
+}
+
+#constructors_title {
+    width: 350px;
+    height: 50px;
+    margin-top: 140px;
+    align-self: center;
+    margin-bottom: 70px;
+}
+
 
 /*..............MODAL...............*/
 .modal-overlay {
@@ -277,6 +290,36 @@ h2 {
 
 }
 
+.sectDrivers {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    filter: drop-shadow(13px 13px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+    align-items: center;
+
+}
+
+.teamDriver {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-items: center;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+.teamDriver2 {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-items: center;
+    justify-content: center;
+    margin-top: -50px;
+}
+
 .sectDriverNum {
     font-size: 120px;
     font-weight: 600;
@@ -341,8 +384,20 @@ h2 {
     padding-bottom: 10px;
 }
 
+.info2-p-c {
+    background: white;
+    border-radius: 9px;
+    filter: drop-shadow(13px 13px 4px rgba(0, 0, 0, 0.25));
+    width: 796px;
+    height: 40px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: -10px;
+}
+
 .teamImg.mclaren {
-    margin-top: -30px;
+    margin-top: -10px;
     width: 90%;
 }
 
@@ -386,6 +441,6 @@ h2 {
 }
 
 .teamImg.mercedes {
-    margin-top: -80px;
+    margin-top: -50px;
     width: 70%;
 }

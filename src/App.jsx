@@ -7,6 +7,7 @@ import Drivers from './Drivers';
 import Login from './login';
 import Register from './Register';
 import './App.css';
+import Constructors from './Constructors';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -37,6 +38,7 @@ function App() {
           }
         />
         <Route path="/drivers" element={<Drivers />} />
+        <Route path="/constructors" element={<Constructors />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
