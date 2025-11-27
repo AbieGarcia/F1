@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import './Drivers.css'
 import './Fantasy.css'
 import PIA from './assets/drivers/OscarPiastri.png';
 import VER from './assets/drivers/Verstappen.png';
@@ -34,12 +33,26 @@ import redbull from './assets/logos/redbull_logo.png';
 import sauber from './assets/logos/sauber_logo.png';
 import williams from './assets/logos/williams_logo.png';
 
+import ferrari_car from './assets/cars/ferrari_car.png';
+import alpine_car from './assets/cars/alpine_car.png';
+import aston_car from './assets/cars/am_car.png';
+import haas_car from './assets/cars/haas_car.png';
+import mclaren_car from './assets/cars/mclaren_car.png';
+import mercedes_car from './assets/cars/mercedes_car.png';
+import rb_car from './assets/cars/rb_car.png';
+import redbull_car from './assets/cars/redbull_car.png';
+import sauber_car from './assets/cars/sauber_car.png';
+import williams_car from './assets/cars/williams_car.png';
+
 function Fantasy() {
     const [drivers, setDrivers] = useState([]);
     const [query, setQuery] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [addDriver, setAddDriver] = useState(null);
+
+    const [constructors, setConstructors] = useState([]);
+    const [addConstructor, setAddConstructor] = useState(null);
 
     const driversAssets = {
         "PIA": {
@@ -140,6 +153,90 @@ function Fantasy() {
 
         },
     };
+    
+        const constructorsAssets = {
+            "mclaren": {
+                img: mclaren_car,
+                team: mclaren,
+                d1: "Lando Norris",
+                d2: "Oscar Piastri",
+                d1Num: "4",
+                d2Num: "81",
+            },
+            "mercedes": {
+                img: mercedes_car,
+                team: mercedes,
+                d1: "George Russell",
+                d2: "Kimi Antonelli",
+                d1Num: "63",
+                d2Num: "12",
+            },
+            "ferrari": {
+                img: ferrari_car,
+                team: ferrari,
+                d1: "Charles Leclerc",
+                d2: "Lewis Hamilton",
+                d1Num: "16",
+                d2Num: "44",
+            },
+            "red_bull": {
+                img: redbull_car,
+                team: redbull,
+                d1: "Max Verstappen",
+                d2: "Yuki Tsunoda",
+                d1Num: "1",
+                d2Num: "22",
+            },
+            "williams": {
+                img: williams_car,
+                team: williams,
+                d1: "Alex Albon",
+                d2: "Carlos Sainz",
+                d1Num: "23",
+                d2Num: "55",
+            },
+            "rb": {
+                img: rb_car,
+                team: rb,
+                d1: "Isack Hadjar ",
+                d2: "Liam Lawson",
+                d1Num: "6",
+                d2Num: "30",
+            },
+            "haas": {
+                img: haas_car,
+                team: haas,
+                d1: "Oliver Bearman",
+                d2: "Esteban Ocon",
+                d1Num: "87",
+                d2Num: "31",
+            },
+            "aston_martin": {
+                img: aston_car,
+                team: aston,
+                d1: "Fernando Alonso",
+                d2: "Lance Stroll",
+                d1Num: "14",
+                d2Num: "18",
+            },
+            "sauber": {
+                img: sauber_car,
+                team: sauber,
+                d1: "Gabriel Bortoleto",
+                d2: "Nico Hulkenberg",
+                d1Num: "5",
+                d2Num: "27",
+            },
+            "alpine": {
+                img: alpine_car,
+                team: alpine,
+                d1: "Pierre Gasly",
+                d2: "Franco Colapinto",
+                d1Num: "10",
+                d2Num: "43",
+            },
+    
+        };
 
     useEffect(() => {
         async function fetchDrivers() {
@@ -159,6 +256,42 @@ function Fantasy() {
         fetchDrivers();
     }, []);
 
+     useEffect(() => {
+        async function fetchConstructors() {
+            setLoading(true);
+            setError('');
+            try {
+                const response = await fetch('https://f1api.dev/api/current/constructors-championship');
+                if (!response.ok) throw new Error('No se pudieron obtener los datos');
+                const ConstructorsListData = await response.json();
+
+                const ConstructorsDetailsArray = await Promise.all(
+                    ConstructorsListData.constructors_championship.map(async (c) => {
+                        return {
+                            name: c.team.teamName,
+                            nationality: c.team.country,
+                            teamID: c.teamId,
+                            points: c.points,
+                            position: c.position,
+                            wins: c.wins,
+                            cChampionships: c.team.constructorsChampionships,
+                            dChampionships: c.team.driversChampionships,
+                        };
+                    })
+                );
+
+                setConstructors(ConstructorsDetailsArray);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchConstructors();
+    }, []);
+
+    
+
     const filteredDrivers = Array.isArray(drivers)
         ? drivers.filter((driver) => (driver?.surname || '').toLowerCase().includes(query.toLowerCase()))
         : [];
@@ -175,18 +308,22 @@ function Fantasy() {
                     <span className='cap-value'> 100 M</span>
                 </div>
 
-                <input className='team-input' type='text' placeholder='Team Name...' value={query} onChange={(e) => setQuery(e.target.value)} />
+                <div className='input-equipo'>
+                    <input className='team-input' type='text' placeholder='Team Name...' value={query} onChange={(e) => setQuery(e.target.value)} />
+                </div>
                 <button className='save-btn'>Save team</button>
             </div>
 
             <div className='fantasy-main'>
                 <aside className='selector-grid'>
-                    {[...Array(6)].map((_, i) => (
+                    {[...Array(5)].map((_, i) => (
                         <button key={`d-${i}`} className='add-slot'>
                             <div className='plus'>+</div>
                             <div className='slot-label'>Add Driver</div>
                         </button>
                     ))}
+
+                    <div></div>
 
                     {[...Array(2)].map((_, i) => (
                         <button key={`c-${i}`} className='add-slot constructor'>
