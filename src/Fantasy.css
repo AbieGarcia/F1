@@ -1,18 +1,29 @@
+.team-name {
+  width: 360px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 12px;
+  margin-bottom: 18px;
+  border: none;
+
+}
 
 .fantasy-banner {
   display: flex;
   justify-content: center;
-  margin-top: 18px;
+  padding-top: 100px;
+  margin-top: 12px;
   margin-bottom: 18px;
 }
 
 .fantasy-banner .title {
   background: #f44343;
   color: #fff;
-  padding: 18px 60px;
+  padding: 5px 20px;
   border-radius: 10px;
   font-size: 48px;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .controls {
@@ -35,7 +46,7 @@
   border: 1px solid #000000;
 }
 
-.input-equipo{
+.input-equipo {
   padding-top: 2px;
 }
 
@@ -99,15 +110,20 @@
 .panel {
   background: #e9e9e9;
   border-radius: 8px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
   padding: 12px;
   display: flex;
   flex-direction: column;
   min-height: 420px;
 }
 
-.drivers-panel { width: 48%; }
-.constructors-panel { width: 48%; }
+.drivers-panel {
+  width: 48%;
+}
+
+.constructors-panel {
+  width: 48%;
+}
 
 .panel-header {
   display: flex;
@@ -140,7 +156,21 @@
   border-radius: 8px;
 }
 
-.driver-meta { flex: 1; }
-.driver-name { font-weight: 600; }
-.driver-value { font-family: 'Courier New', monospace; }
+.driver-meta {
+  flex: 1;
+}
 
+.driver-name {
+  font-weight: 600;
+}
+
+.driver-value {
+  font-family: 'Courier New', monospace;
+}
+
+/*_________*/
+
+.driver-name {
+  color: #f44343;
+  font-size: 16px;
+}

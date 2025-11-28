@@ -89,13 +89,57 @@ function Fantasy() {
         alpine: { img: alpine_car, team: alpine },
     };
 
+    const valor_drivers = {
+        max_verstappen: 29.8,
+        oscar_piastri: 25.4,
+        lando_norris: 30.4,
+        charles_leclerc: 23.3,
+        lewis_hamilton: 22.2,
+        yuki_tsunoda: 11.2,
+        fernando_alonso: 4.5,
+        lance_stroll: 7.3,
+        kimi_antonelli: 17.5,
+        george_russell: 23.6,
+        pierre_gasly: 5.9,
+        franco_colapinto: 4.5,
+        carlos_sainz: 7.1,
+        alexander_albon: 13.2,
+        esteban_ocon: 7.3,
+        oliver_bearman: 9.5,
+        liam_lawson: 5.3,
+        isack_hadjar: 6.3,
+        gabriel_bortoleto: 6.1,
+        nico_hulkenberg: 5.6,
+    };
+
     useEffect(() => {
         async function fetchDrivers() {
             const res = await fetch(
                 "https://f1api.dev/api/current/drivers-championship?limit=20"
             );
             const data = await res.json();
-            setDrivers(data.drivers_championship); // IMPORTANT FIX
+
+            const DriversDetailsArray = data.drivers_championship.map((d) => {
+                const name = d.driver.name;
+                const surname = d.driver.surname;
+                const imgKey = `${name}_${surname}`.toLowerCase().replace(/\s+/g, "_");
+                return {
+                    name,
+                    surname,
+                    team: d.team.teamName,
+                    number: d.driver.number,
+                    nationality: d.driver.nationality,
+                    wins: d.wins,
+                    points: d.points,
+                    position: d.position,
+                    shortName: d.driver.shortName,
+                    driverId: d.driver.driverId ?? d.driver.number,
+                    imgKey,
+                    teamId: d.team.teamId,
+                };
+            });
+
+            setDrivers(DriversDetailsArray);
         }
         fetchDrivers();
     }, []);
@@ -115,7 +159,7 @@ function Fantasy() {
         const fullName = `${d.name ?? ""} ${d.surname ?? ""}`.toLowerCase();
         return fullName.includes(query.toLowerCase());
     });
-    
+
 
     function addDriver(d) {
         const empty = selectedDrivers.findIndex((x) => x === null);
@@ -151,22 +195,26 @@ function Fantasy() {
                 </div>
 
                 <input
-                    className="team-input"
-                    placeholder="Search driver..."
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
+                    className="team-name"
+                    placeholder="Enter team name..."
                 />
             </div>
 
             <div className="fantasy-main">
                 <aside className="selector-grid">
+
                     {selectedDrivers.map((d, i) => (
                         <div key={i} className="add-slot">
                             {d ? (
                                 <>
                                     <img
                                         className="slot-img"
-                                        src={driverImages[d.driverId]}
+                                        src={(() => {
+                                            const imgKey = `${d.name}_${d.surname}`
+                                                .toLowerCase()
+                                                .replace(/\s+/g, "_");
+                                            return driverImages[imgKey] ?? "";
+                                        })()}
                                     />
                                     <div className="slot-label">{d.name} {d.surname}</div>
                                 </>
@@ -209,12 +257,21 @@ function Fantasy() {
                             <span className="col-title">Value</span>
                         </div>
 
+                        <div>
+                            <input
+                                className="team-name"
+                                placeholder="Search driver..."
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                            />
+                        </div>
+
                         <div className="panel-body">
                             {filteredDrivers.map((d, i) => (
                                 <div key={i} className="driver-item">
                                     <img
                                         className="driver-thumb"
-                                        src={driverImages[d.driverId]}
+                                        src={driverImages[d.imgKey] ?? ""}
                                     />
                                     <div className="driver-meta">
                                         <div className="driver-name">
@@ -224,7 +281,7 @@ function Fantasy() {
                                     <button className="add-button" onClick={() => addDriver(d)}>
                                         +
                                     </button>
-                                    <div className="driver-value">$30M</div>
+                                    <div className="driver-value">Valor individual</div>
                                 </div>
                             ))}
                         </div>
@@ -253,9 +310,9 @@ function Fantasy() {
                             ))}
                         </div>
                     </div>
-                </section>
-            </div>
-        </div>
+                </section >
+            </div >
+        </div >
     );
 }
 
