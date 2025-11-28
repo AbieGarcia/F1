@@ -39,10 +39,32 @@
 }
 
 .pcard {
-    font-size: 12pt;
+    font-size: 11pt;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: -5%;
+
 }
 
 .title-card {
     font-size: 14pt;
-    margin-top: 150px;
+    padding-left: 10%;
+    margin-top: 1%;
+    padding-right: 10%;
+}
+
+#card1{
+    margin-left: 55%;
+    margin-top: -30%;
+}
+
+#card2{
+    margin-left: 75%;
+    margin-top: -23.4%;  
+}
+
+.imgcard{
+    width: 361px;
+    height: 200px;
+    margin-top: -10%;
 }
