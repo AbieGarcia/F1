@@ -1,0 +1,48 @@
+.tabla-home {
+    margin-left: 300px;
+    width: 400px;
+    margin-top: 10px;
+}
+
+.home {
+    display: flex;
+    flex-direction: row;
+}
+
+#calendar {
+    margin-top: 200px;
+    width: 500px;
+    margin-left: 250px;
+}
+
+#about {
+    margin-top: 200px;
+    width: 500px;
+    margin-left: 400px;
+}
+
+.paragraph {
+    margin-left: 250px;
+    width: 860px;
+    margin-top: 10px;
+}
+
+.cardh {
+    display: flex;
+    flex-direction: column;
+    width: 361px;
+    height: 423px;
+    border-radius: 10px;
+    padding-top: 20px;
+    color: white;
+    background-color: black;
+}
+
+.pcard {
+    font-size: 12pt;
+}
+
+.title-card {
+    font-size: 14pt;
+    margin-top: 150px;
+}
