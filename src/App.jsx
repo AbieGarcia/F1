@@ -7,8 +7,11 @@ import Drivers from './Drivers';
 import Login from './login';
 import Register from './Register';
 import Fantasy from './Fantasy';
-import './App.css';
 import Constructors from './Constructors';
+import Profile from './profile';
+import Settings from './settings';
+import Logout from './logout';
+import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -43,6 +46,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/fantasy" element={<Fantasy />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/logout" element={<Logout />} />
 
       </Routes>
     </>
