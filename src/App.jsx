@@ -10,8 +10,10 @@ import Fantasy from './Fantasy';
 import Constructors from './Constructors';
 import Profile from './profile';
 import Settings from './settings';
+import tabla from './assets/tabla.jpg';
 import Logout from './logout';
 import './App.css';
+import './home.css';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -35,9 +37,26 @@ function App() {
           path="/"
           element={
             <>
-              <body>
-
-              </body>
+              <div className='body'>
+                <div className='home'>
+                  <div>
+                    <h3 className='title' id='calendar'>Calendar</h3>
+                    <img className='tabla-home' src={tabla} />
+                  </div>
+                  <div className='information'>
+                    <h3 className='title' id='about'>About F1</h3>
+                    <p className='paragraph'> Formula 1 (F1) is the highest level of international car racing. Ten teams, each with two drivers, compete in fast, high-tech cars across global Grand Prix events.
+                      Drivers earn points based on race results to win the Drivers’ and Constructors’ Championships. Races involve speed, strategy, pit stops, and tire choices.
+                      F1 cars reach over 300 km/h and use advanced aerodynamics and hybrid engines.
+                      The sport combines cutting-edge engineering, driver skill, and global excitement, making it one of the most thrilling and watched competitions in the world.</p>
+                  </div>
+                </div>
+                <div className='cardh'>
+                  <h4 className='title-card'>Jolyon Palmer's Analysis: Piastri's weekend to forget in Sao Paulo</h4>
+                  <p className='pcard'>F1 TV's Jolyon Palmer looks at the two major incidents at Interlagos involving Oscar Piastri,
+                    who consequently slipped further behind his McLaren teammate Lando Norris in the drivers' championship.</p>
+                </div>
+              </div>
             </>
           }
         />
