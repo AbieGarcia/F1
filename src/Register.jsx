@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import './login.css'
+import { supabase } from "./lib/supabaseClient"
 
 function Register() {
 
@@ -10,14 +11,33 @@ function Register() {
     const [team, setTeam] = useState('');
     const [mensaje, setMensaje] = useState('');
 
-    const verificarCampos = () => {
-        if (user && password && name && team) {
-            //Verifica que todos los campos estén llenos.
-            setMensaje('');
+    const agregarUsuario = async () => {
+        const { data, error } = await supabase
+            .from("users")
+            .insert([
+                {
+                    user: user,
+                    name: name,
+                    team: team,
+                    password: password,
+                },
+            ]);
+
+        if (error) {
+            setMensaje("Error al registrar");
         } else {
-            setMensaje('Por favor, completa todos los campos antes de agregar.');
+            setMensaje("Usuario registrado correctamente");
         }
     };
+
+    const verificarCampos = async () => {
+        if (user && password && name && team) {
+            await agregarUsuario(); // Esperamos a que termine
+        } else {
+            setMensaje("Por favor, completa todos los campos");
+        }
+    };
+
 
     return (
         <div className='body'>
