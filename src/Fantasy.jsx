@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import "./Fantasy.css";
 
-// ---- DRIVER IMAGES ----
 import PIA from "./assets/drivers/OscarPiastri.png";
 import VER from "./assets/drivers/Verstappen.png";
 import LEC from "./assets/drivers/Leclerc.png";
@@ -24,7 +23,6 @@ import HAD from "./assets/drivers/Hadjar.png";
 import BOR from "./assets/drivers/Bortoleto.png";
 import HUL from "./assets/drivers/Nico.png";
 
-// ---- TEAM LOGOS ----
 import ferrari from "./assets/logos/ferrari_logo.png";
 import alpine from "./assets/logos/alpine_logo.png";
 import aston from "./assets/logos/aston_logo.png";
@@ -36,7 +34,6 @@ import redbull from "./assets/logos/redbull_logo.png";
 import sauber from "./assets/logos/sauber_logo.png";
 import williams from "./assets/logos/williams_logo.png";
 
-// ---- CAR IMAGES ----
 import ferrari_car from "./assets/cars/ferrari_car.png";
 import alpine_car from "./assets/cars/alpine_car.png";
 import aston_car from "./assets/cars/am_car.png";
