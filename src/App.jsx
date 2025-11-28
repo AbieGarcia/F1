@@ -11,6 +11,8 @@ import Constructors from './Constructors';
 import Profile from './profile';
 import Settings from './settings';
 import tabla from './assets/tabla.jpg';
+import imgcard1 from './assets/img-card1.png';
+import imgcard2 from './assets/img-card2.png';
 import Logout from './logout';
 import './App.css';
 import './home.css';
@@ -51,12 +53,19 @@ function App() {
                       The sport combines cutting-edge engineering, driver skill, and global excitement, making it one of the most thrilling and watched competitions in the world.</p>
                   </div>
                 </div>
-                <div className='cardh'>
+                  <div className='cardh' id='card1'>
+                    <img  className='imgcard' src={imgcard1} />
                   <h4 className='title-card'>Jolyon Palmer's Analysis: Piastri's weekend to forget in Sao Paulo</h4>
                   <p className='pcard'>F1 TV's Jolyon Palmer looks at the two major incidents at Interlagos involving Oscar Piastri,
                     who consequently slipped further behind his McLaren teammate Lando Norris in the drivers' championship.</p>
+                  </div>
+                  <div className='cardh' id='card2'>
+                    <img  className='imgcard' src={imgcard2} />
+                  <h4 className='title-card'>2025 Sao Paulo Grand Prix: Every Max Verstappen overtake</h4>
+                  <p className='pcard'>Watch as we highlight Max Verstappen's heroic recovery from starting in the pit lane to finishing
+                     P3 in Sao Paulo.</p>
+                  </div>
                 </div>
-              </div>
             </>
           }
         />
