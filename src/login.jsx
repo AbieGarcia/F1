@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { supabase } from "./lib/supabaseClient"
+
 import './App.css'
 import './login.css'
 
@@ -16,15 +18,29 @@ function Login() {
     const [password, setPassword] = useState('');
     const [mensaje, setMensaje] = useState('');
 
-    const verificarCampos = () => {
-        if (user && password) {
-            //Verifica que todos los campos estén llenos.
-            setMensaje('');
-        } else {
-            setMensaje('Por favor, completa todos los campos antes de agregar.');
+    const loginUsuario = async (user, password) => {
+        const { data, error } = await supabase
+            .from("users")
+            .select("*")
+            .eq("user", user)
+            .eq("password", password)
+            .single(); // esperamos un solo resultado
+
+        if (error || !data) {
+            return { success: false, message: "Usuario o contraseña incorrectos" };
         }
+
+        return { success: true, message: "Login exitoso", user: data };
     };
 
+
+    const verificarCampos = async () => {
+        if (user && password) {
+            await loginUsuario(); // Esperamos a que termine
+        } else {
+            setMensaje("Por favor, completa todos los campos");
+        }
+    };
     return (
         <div className='body'>
             {/*Mostrar el mensaje*/}
