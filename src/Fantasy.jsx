@@ -49,6 +49,7 @@ function Fantasy() {
     const [drivers, setDrivers] = useState([]);
     const [constructors, setConstructors] = useState([]);
     const [query, setQuery] = useState("");
+    const [query_constructors, setQueryConstructors] = useState("");
 
     const [selectedDrivers, setSelectedDrivers] = useState([null, null, null, null, null]);
     const [selectedConstructors, setSelectedConstructors] = useState([null, null]);
@@ -62,12 +63,12 @@ function Fantasy() {
         yuki_tsunoda: TSU,
         fernando_alonso: ALO,
         lance_stroll: STR,
-        kimi_antonelli: ANT,
+        andrea_kimi_antonelli: ANT,
         george_russell: RUS,
         pierre_gasly: GAS,
         franco_colapinto: COL,
         carlos_sainz: SAI,
-        alexander_albon: ALB,
+        alex_albon: ALB,
         esteban_ocon: OCO,
         oliver_bearman: BEA,
         liam_lawson: LAW,
@@ -98,12 +99,12 @@ function Fantasy() {
         yuki_tsunoda: 11.2,
         fernando_alonso: 4.5,
         lance_stroll: 7.3,
-        kimi_antonelli: 17.5,
+        andrea_kimi_antonelli: 17.5,
         george_russell: 23.6,
         pierre_gasly: 5.9,
         franco_colapinto: 4.5,
         carlos_sainz: 7.1,
-        alexander_albon: 13.2,
+        alex_albon: 13.2,
         esteban_ocon: 7.3,
         oliver_bearman: 9.5,
         liam_lawson: 5.3,
@@ -158,6 +159,11 @@ function Fantasy() {
     const filteredDrivers = drivers.filter((d) => {
         const fullName = `${d.name ?? ""} ${d.surname ?? ""}`.toLowerCase();
         return fullName.includes(query.toLowerCase());
+    });
+
+    const filteredConstructors = constructors.filter((k) => {
+        const fullName = `${k.name ?? ""} ${k.surname ?? ""}`.toLowerCase();
+        return fullName.includes(query_constructors.toLowerCase());
     });
 
 
@@ -253,11 +259,11 @@ function Fantasy() {
                 <section className="lists">
                     <div className="panel drivers-panel">
                         <div className="panel-header">
-                            <h3>Drivers</h3>
+                            <h3 className="letrero">Drivers</h3>
                             <span className="col-title">Value</span>
                         </div>
 
-                        <div>
+                        <div className="buscador">
                             <input
                                 className="team-name"
                                 placeholder="Search driver..."
@@ -278,10 +284,14 @@ function Fantasy() {
                                             {d.name} {d.surname}
                                         </div>
                                     </div>
-                                    <button className="add-button" onClick={() => addDriver(d)}>
+                                    <div className="driver-button-div">
+                                    </div>
+                                    <button className="add-button-driver" onClick={() => addDriver(d)}>
                                         +
                                     </button>
-                                    <div className="driver-value">Valor individual</div>
+
+
+                                    <div className="driver-value">{valor_drivers[d.imgKey] ?? "M"} </div>
                                 </div>
                             ))}
                         </div>
@@ -292,23 +302,33 @@ function Fantasy() {
                             <h3>Constructors</h3>
                         </div>
 
-                        <div className="panel-body">
-                            {constructors.map((c, i) => (
-                                <div key={i} className="constructor-item">
-                                    <img
-                                        className="constructor-thumb"
-                                        src={constructorsAssets[c.teamId]?.img}
-                                    />
-                                    <div className="constructor-name">{c.team.teamName}</div>
-                                    <button
-                                        className="add-button"
-                                        onClick={() => addConstructor(c)}
-                                    >
-                                        +
-                                    </button>
-                                </div>
-                            ))}
+                        <div className="buscador">
+                            <input
+                                className="team-name"
+                                placeholder="Search constructor..."
+                                value={query_constructors}
+                                onChange={(e) => setQueryConstructors(e.target.value)}
+                            />
                         </div>
+                        {filteredConstructors.map((d, i) => (
+                            <div className="panel-body">
+                                {constructors.map((c, i) => (
+                                    <div key={i} className="constructor-item">
+                                        <img
+                                            className="constructor-thumb"
+                                            src={constructorsAssets[c.teamId]?.img}
+                                        />
+                                        <div className="constructor-name">{c.team.teamName}</div>
+                                        <button
+                                            className="add-button"
+                                            onClick={() => addConstructor(c)}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
                     </div>
                 </section >
             </div >
