@@ -41,7 +41,8 @@ function Login() {
                 setMensaje(resultado.message);
             } else {
                 setMensaje(resultado.message);
-                setUsuarioLogeado(resultado.user);
+                localStorage.setItem("usuarioLogeado", JSON.stringify(resultado.user)); //guardar local para usar en otras paginas la info del usuario
+                setUsuarioLogeado(resultado.user); //el usuario logeado se actualiza con la nueva info
                 navigate("/profile");
             }
         } else {
