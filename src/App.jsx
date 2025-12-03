@@ -1,6 +1,6 @@
 import { Routes, Route, Link, BrowserRouter } from 'react-router-dom';
 import { UserContext } from "./UserContext";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import f1Logo from './assets/formula-1-logo.png';
 import settings from './assets/Settings.png';
@@ -22,6 +22,17 @@ function App() {
 
   const [usuarioLogeado, setUsuarioLogeado] = useState(null);
 
+  useEffect(() => {
+    try {
+      const usuarioGuardado = localStorage.getItem("usuarioLogeado");
+      if (usuarioGuardado) {
+        setUsuarioLogeado(JSON.parse(usuarioGuardado));
+      }
+    } catch (error) {
+      console.error("Error al leer usuario del localStorage:", error);
+    }
+  }, []);
+
   return (
     <>
       <div className="header">
@@ -32,7 +43,7 @@ function App() {
           <NavLink to="/constructors" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} >Constructors</NavLink>
           <NavLink to="/fantasy" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} >Fantasy</NavLink>
           <NavLink to="/login" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} >LOG IN</NavLink>
-          <NavLink to="/settings" ><img className='settingIMG' src={settings}></img></NavLink>
+          <NavLink to="/profile" ><img className='settingIMG' src={settings}></img></NavLink>
         </div>
       </div>
       <UserContext.Provider value={{ usuarioLogeado, setUsuarioLogeado }}>
