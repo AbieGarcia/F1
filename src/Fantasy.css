@@ -1,3 +1,22 @@
+.letrero {
+  height: 10px;
+}
+
+.driver-button-div {
+  height: 50px;
+  width: 40%;
+}
+
+.add-button-driver {
+  height: 50px;
+  width: 80%;
+}
+
+.buscador {
+  height: 50px;
+  padding-left: 10px;
+}
+
 .team-name {
   width: 360px;
   display: flex;
@@ -119,6 +138,7 @@
 
 .drivers-panel {
   width: 48%;
+  height: 10%
 }
 
 .constructors-panel {
@@ -127,9 +147,12 @@
 
 .panel-header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 8px;
+  padding-top: 5px;
+  padding-left: 10px;
+
 }
 
 .panel-body {

@@ -54,9 +54,9 @@ function App() {
               <>
                 <div className='body'>
                   <div className='home'>
-                    <div className='tabla-home'>
+                    <div>
                       <h3 className='title' id='calendar'>Calendar</h3>
-                      <img  src={tabla} />
+                      <img className='tabla-home' src={tabla} />
                     </div>
                     <div className='information'>
                       <h3 className='title' id='about'>About F1</h3>
