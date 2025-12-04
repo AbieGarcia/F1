@@ -1,8 +1,8 @@
 
 
 .tabla-home {
-    padding-left: 50%;
-    width: 250%;
+    padding-left: 45%;
+    width: 200%;
     margin-top: 10%;
 }
 
@@ -13,13 +13,13 @@
 }
 
 #calendar {
-    margin-top: 85%;
+    margin-top: 75%;
     width: 150%;
-    margin-left: 100%;
+    margin-left: 65%;
 }
 
 #about {
-    margin-top: -85%;
+    margin-top: -81%;
     width: 20%;
     margin-left: 60%;
 }
@@ -28,6 +28,7 @@
     margin-left: 50%;
     width: 45%;
     margin-top: 1%;
+    color: black;
 }
 
 .cardh {
@@ -58,7 +59,7 @@
 
 #card1{
 margin-left: 50%;
-margin-top: -65%;
+margin-top: -60%;
 }
 
 #card2{
