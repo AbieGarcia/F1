@@ -9,6 +9,16 @@ import './profile.css';
 
 function Logout() {
 
+    const { usuarioLogeado } = useContext(UserContext);
+
+    if (!usuarioLogeado) {
+        return (
+            <div>
+                <p className="title">No se ha logeado a una cuenta</p>
+            </div>
+        )
+    }
+
     const navigate = useNavigate();
 
     const cerrarSesion = () => {
