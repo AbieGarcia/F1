@@ -1,31 +1,32 @@
 
 
 .tabla-home {
-    padding-left: 90%;
+    padding-left: 50%;
     width: 250%;
     margin-top: 10%;
 }
 
 .home {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
 }
 
 #calendar {
     margin-top: 85%;
     width: 150%;
-    margin-left: 150%;
+    margin-left: 100%;
 }
 
 #about {
-    margin-top: 10%;
+    margin-top: -85%;
     width: 20%;
     margin-left: 60%;
 }
 
 .paragraph {
-    margin-left: 45%;
-    width: 50%;
+    margin-left: 50%;
+    width: 45%;
     margin-top: 1%;
 }
 
@@ -57,7 +58,7 @@
 
 #card1{
 margin-left: 50%;
-margin-top: -45%;
+margin-top: -65%;
 }
 
 #card2{
