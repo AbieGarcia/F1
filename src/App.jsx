@@ -2,10 +2,24 @@ import { Routes, Route, Link, BrowserRouter } from 'react-router-dom';
 import { UserContext } from "./UserContext";
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import f1Logo from './assets/formula-1-logo.png';
-import settings from './assets/Settings.png';
+
+//Imgs home
+import tabla from './assets/tabla.jpg';
 import imgcard1 from './assets/img-card1.png';
 import imgcard2 from './assets/img-card2.png';
+
+//Imgs themes
+import f1LogoDefault from './assets/formula-1-logo.png';
+import f1LogoBlanc from './assets/LogoBlanc.png';
+import f1LogoNegro from './assets/LogoNegro.png';
+
+import settingsDefault from './assets/Settings.png';
+import settingsFerrari from './assets/SettingsFerrari.png';
+import settingsRedbull from './assets/SettingsRedBull.png';
+import settingsMclaren from './assets/SettingsMclaren.png';
+import settingsMercedes from './assets/SettingsMercedes.png';
+
+//Otras páginas
 import Drivers from './Drivers';
 import Login from './login';
 import Register from './Register';
@@ -13,7 +27,6 @@ import Fantasy from './Fantasy';
 import Constructors from './Constructors';
 import Profile from './profile';
 import Settings from './settings';
-import tabla from './assets/tabla.jpg';
 import Logout from './logout';
 import './App.css';
 import './home.css';
@@ -33,17 +46,40 @@ function App() {
     }
   }, []);
 
+  const themeAssets = {
+    "ferrari": {
+      logo: f1LogoBlanc,
+      settings: settingsFerrari,
+    },
+    "redbull": {
+      logo: f1LogoDefault,
+      settings: settingsRedbull,
+    },
+    "mclaren": {
+      logo: f1LogoBlanc,
+      settings: settingsMclaren,
+    },
+    "mercedes": {
+      logo: f1LogoBlanc,
+      settings: settingsMclaren,
+    },
+    "default": {
+      logo: f1LogoDefault,
+      settings: settingsDefault,
+    },
+  }
+
   return (
     <>
-      <div className="header">
-        <img className='LogoF1' src={f1Logo} />
+      <div className={`header ${usuarioLogeado?.theme ?? 'default'}`}>
+        <img className='LogoF1' src={themeAssets[usuarioLogeado?.theme ?? 'default'].logo} />
         <div className="menu">
-          <NavLink to="/" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} >Home</NavLink>
-          <NavLink to="/drivers" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Drivers</NavLink>
-          <NavLink to="/constructors" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} >Constructors</NavLink>
-          <NavLink to="/fantasy" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} >Fantasy</NavLink>
-          <NavLink to="/login" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} >LOG IN</NavLink>
-          <NavLink to="/profile" ><img className='settingIMG' src={settings}></img></NavLink>
+          <NavLink to="/" className={({ isActive }) => isActive ? `nav-link active ${usuarioLogeado?.theme ?? 'default'}` : `nav-link ${usuarioLogeado?.theme ?? 'default'}`} >Home</NavLink>
+          <NavLink to="/drivers" className={({ isActive }) => isActive ? `nav-link active ${usuarioLogeado?.theme ?? 'default'}` : `nav-link ${usuarioLogeado?.theme ?? 'default'}`}>Drivers</NavLink>
+          <NavLink to="/constructors" className={({ isActive }) => isActive ? `nav-link active ${usuarioLogeado?.theme ?? 'default'}` : `nav-link ${usuarioLogeado?.theme ?? 'default'}`} >Constructors</NavLink>
+          <NavLink to="/fantasy" className={({ isActive }) => isActive ? `nav-link active ${usuarioLogeado?.theme ?? 'default'}` : `nav-link ${usuarioLogeado?.theme ?? 'default'}`} >Fantasy</NavLink>
+          <NavLink to="/login" className={({ isActive }) => isActive ? `nav-link active ${usuarioLogeado?.theme ?? 'default'}` : `nav-link ${usuarioLogeado?.theme ?? 'default'}`} >LOG IN</NavLink>
+          <NavLink to="/profile" ><img className='settingIMG' src={themeAssets[usuarioLogeado?.theme ?? 'default'].settings}></img></NavLink>
         </div>
       </div>
       <UserContext.Provider value={{ usuarioLogeado, setUsuarioLogeado }}>
