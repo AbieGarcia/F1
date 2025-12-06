@@ -1,3 +1,111 @@
+/*   TEAMS COLOR THEMES    */
+
+.header.default {
+  background-color: #2F2F2F;
+}
+
+.header.ferrari {
+  background-color: #BD0000;
+}
+
+.header.redbull {
+  background-color: #1B2B5A;
+}
+
+.header.mclaren {
+  background-color: #FF8000;
+}
+
+.header.mercedes {
+  background-color: #00A19B;
+}
+
+.nav-link.default {
+  color: #ffff;
+  transition: color 0.3s ease;
+}
+
+.nav-link.default:hover {
+  color: rgb(250, 102, 102);
+  text-decoration: underline;
+}
+
+.nav-link.active.default {
+  font-weight: bold;
+  background-color: #e10600;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.nav-link.redbull {
+  color: #ffff;
+  transition: color 0.3s ease;
+}
+
+.nav-link.redbull:hover {
+  color: #FFEA00;
+  text-decoration: underline;
+}
+
+.nav-link.active.redbull {
+  font-weight: bold;
+  background-color: #FF0026;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.nav-link.ferrari {
+  color: #ffff;
+  transition: color 0.3s ease;
+}
+
+.nav-link.ferrari:hover {
+  color: #F7D31D;
+  text-decoration: underline;
+}
+
+.nav-link.active.ferrari {
+  font-weight: bold;
+  background-color: #F60000;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.nav-link.mclaren {
+  color: #3a3a3a;
+  transition: color 0.3s ease;
+}
+
+.nav-link.mclaren:hover {
+  color: #47C7FC;
+  text-decoration: underline;
+}
+
+.nav-link.active.mclaren {
+  font-weight: bold;
+  background-color: #EB3800;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.nav-link.mercedes {
+  color: #FFFF;
+  transition: color 0.3s ease;
+}
+
+.nav-link.mercedes:hover {
+  color: #75ebf3;
+  text-decoration: underline;
+}
+
+.nav-link.active.mercedes {
+  font-weight: bold;
+  background-color: #004146;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+/*       FONTS     */
 @font-face {
   font-family: 'mono';
   src: url('./assets/mono.ttf') format('truetype');
@@ -11,6 +119,8 @@
   font-weight: 600;
   font-style: normal;
 }
+
+/*     ESTILOS GENERALES DE LA PAG     */
 
 .body {
   display: flex;
@@ -38,8 +148,7 @@
   flex-direction: row;
   width: 100vw;
   height: 12vh;
-  z-index: 1;
-  background-color: #2F2F2F;
+  z-index: 3;
   position: fixed;
   top: 0;
   left: 0;
@@ -47,6 +156,7 @@
   justify-content: space-between;
   padding-left: 1%;
   padding-right: 10%;
+
 }
 
 .LogoF1 {
@@ -62,22 +172,6 @@
   padding-right: 2%;
 }
 
-.nav-link {
-  color: #ffff;
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-  color: rgb(250, 102, 102);
-  text-decoration: underline;
-}
-
-.nav-link.active {
-  font-weight: bold;
-  background-color: #e10600;
-  border-radius: 4px;
-  padding: 4px 8px;
-}
 
 .settingIMG {
   width: 70%;

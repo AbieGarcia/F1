@@ -13,7 +13,18 @@ import redbull_theme from './assets/themes/redbull_theme.png';
 
 function Settings() {
 
-    const { usuarioLogeado } = useContext(UserContext);
+    const { usuarioLogeado, setUsuarioLogeado } = useContext(UserContext);
+
+    const cambiarTema = (t) => {
+        setUsuarioLogeado((prev) => {
+            const actualizado = {
+                ...prev,
+                theme: t
+            };
+            localStorage.setItem("usuarioLogeado", JSON.stringify(actualizado));
+            return actualizado;
+        });
+    };
 
     if (!usuarioLogeado) {
         return (
@@ -35,10 +46,11 @@ function Settings() {
                 <hr></hr>
                 <p>Choose the color of your favorite team!</p>
                 <div className="theme-cards">
-                    <img src={ferrari_theme} className="theme-card"></img>
-                    <img src={redbull_theme} className="theme-card"></img>
-                    <img src={mclaren_theme} className="theme-card"></img>
-                    <img src={mercedes_theme} className="theme-card"></img>
+                    <img src={ferrari_theme} className="theme-card" onClick={() => cambiarTema("ferrari")}></img>
+                    <img src={redbull_theme} className="theme-card" onClick={() => cambiarTema("redbull")}></img>
+                    <img src={mclaren_theme} className="theme-card" onClick={() => cambiarTema("mclaren")}></img>
+                    <img src={mercedes_theme} className="theme-card" onClick={() => cambiarTema("mercedes")}></img>
+                    <button className="default-btn" onClick={() => cambiarTema("default")}>default</button>
                 </div>
                 <hr></hr>
             </div>
