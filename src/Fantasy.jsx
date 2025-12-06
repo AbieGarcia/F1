@@ -54,6 +54,10 @@ function Fantasy() {
     const [selectedDrivers, setSelectedDrivers] = useState([null, null, null, null, null]);
     const [selectedConstructors, setSelectedConstructors] = useState([null, null]);
 
+    const COST_CAP = 100;
+
+    const [totalCost, setTotalCost] = useState(0);
+
     const driverImages = {
         max_verstappen: VER,
         oscar_piastri: PIA,
@@ -113,6 +117,19 @@ function Fantasy() {
         nico_hulkenberg: 5.6,
     };
 
+    const valor_constructors = {
+        mclaren: 36.1,
+        mercedes: 28.4,
+        ferrari: 31.8,
+        red_bull: 31.1,
+        williams: 19.5,
+        rb: 16.2,
+        haas: 15.6,
+        aston_martin: 10.3,
+        sauber: 8.7,
+        alpine: 10.1,
+    };
+
     useEffect(() => {
         async function fetchDrivers() {
             const res = await fetch(
@@ -147,14 +164,29 @@ function Fantasy() {
 
     useEffect(() => {
         async function fetchConstructors() {
-            const res = await fetch(
-                "https://f1api.dev/api/current/constructors-championship"
-            );
+            const res = await fetch("https://f1api.dev/api/current/constructors-championship");
             const data = await res.json();
-            setConstructors(data.constructors_championship);
+
+            const normalized = data.constructors_championship.map((c) => {
+                const name = c.team?.teamName || c.teamName || "";
+                const id = c.team?.teamId || c.teamId || name.toLowerCase().replace(/\s+/g, "_");
+
+                return {
+                    ...c,
+                    teamName: name,
+                    teamId: id,
+                    team: { teamName: name, teamId: id }
+                };
+            });
+
+            setConstructors(normalized);
         }
         fetchConstructors();
     }, []);
+
+    useEffect(() => {
+        setTotalCost(calculateTotalCost(selectedDrivers, selectedConstructors));
+    }, [selectedDrivers, selectedConstructors]);
 
     const filteredDrivers = drivers.filter((d) => {
         const fullName = `${d.name ?? ""} ${d.surname ?? ""}`.toLowerCase();
@@ -162,14 +194,24 @@ function Fantasy() {
     });
 
     const filteredConstructors = constructors.filter((k) => {
-        const fullName = `${k.name ?? ""} ${k.surname ?? ""}`.toLowerCase();
-        return fullName.includes(query_constructors.toLowerCase());
+        const teamName = (k.team?.teamName ?? k.teamName ?? "").toLowerCase();
+        return teamName.includes(query_constructors.toLowerCase());
     });
 
-
     function addDriver(d) {
+        const alreadySelected = selectedDrivers.some(
+            (s) => s && s.driverId === d.driverId
+        );
+        if (alreadySelected) return;
+
         const empty = selectedDrivers.findIndex((x) => x === null);
         if (empty === -1) return;
+
+        const potentialCost = totalCost + (valor_drivers[d.imgKey] || 0);
+        if (potentialCost > COST_CAP) {
+            alert("You don't have enough budget for this driver!");
+            return;
+        }
 
         setSelectedDrivers((arr) => {
             const copy = [...arr];
@@ -178,9 +220,22 @@ function Fantasy() {
         });
     }
 
+
     function addConstructor(c) {
+        const alreadySelected = selectedConstructors.some(
+            (s) => s && s.teamId === c.teamId
+        );
+        if (alreadySelected) return;
+
         const empty = selectedConstructors.findIndex((x) => x === null);
         if (empty === -1) return;
+
+        const potentialCost = totalCost + (valor_constructors[c.teamId] || 0);
+
+        if (potentialCost > COST_CAP) {
+            alert("Not enough budget for this constructor!");
+            return;
+        }
 
         setSelectedConstructors((arr) => {
             const copy = [...arr];
@@ -188,6 +243,27 @@ function Fantasy() {
             return copy;
         });
     }
+
+
+    function calculateTotalCost(drivers, constructors) {
+        let total = 0;
+
+        drivers.forEach((d) => {
+            if (d) {
+                total += valor_drivers[d.imgKey] || 0;
+            }
+        });
+
+        constructors.forEach((c) => {
+            if (c) {
+                total += valor_constructors[c.teamId] || 0;
+            }
+        });
+
+        return total;
+    }
+
+
 
     return (
         <div className="body">
@@ -197,7 +273,9 @@ function Fantasy() {
 
             <div className="controls">
                 <div className="cost-cap">
-                    <strong>Cost cap:</strong> 100M
+
+                    <strong>Remaining:</strong>{" "}
+                    {(COST_CAP - totalCost).toFixed(1)}M
                 </div>
 
                 <input
@@ -276,7 +354,7 @@ function Fantasy() {
                             {filteredDrivers.map((d, i) => (
                                 <div key={i} className="driver-item">
                                     <img
-                                        className="driver-thumb"
+                                        className="driver-image"
                                         src={driverImages[d.imgKey] ?? ""}
                                     />
                                     <div className="driver-meta">
@@ -299,7 +377,7 @@ function Fantasy() {
 
                     <div className="panel constructors-panel">
                         <div className="panel-header">
-                            <h3>Constructors</h3>
+                            <h3 className="letrero">Constructors</h3>
                         </div>
 
                         <div className="buscador">
@@ -310,25 +388,31 @@ function Fantasy() {
                                 onChange={(e) => setQueryConstructors(e.target.value)}
                             />
                         </div>
-                        {filteredConstructors.map((d, i) => (
-                            <div className="panel-body">
-                                {constructors.map((c, i) => (
-                                    <div key={i} className="constructor-item">
-                                        <img
-                                            className="constructor-thumb"
-                                            src={constructorsAssets[c.teamId]?.img}
-                                        />
-                                        <div className="constructor-name">{c.team.teamName}</div>
-                                        <button
-                                            className="add-button"
-                                            onClick={() => addConstructor(c)}
-                                        >
-                                            +
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
+                        <div className="panel-body">
+                            {filteredConstructors.map((c, i) => (
+                                <div key={i} className="constructor-item">
+                                    <img
+                                        className="constructor-image"
+                                        src={constructorsAssets[c.teamId]?.img}
+                                        alt={c.teamName ?? c.team?.teamName ?? "team"}
+                                    />
+                                    <div className="constructor-name">{c.team?.teamName ?? c.teamName}</div>
+                                    <button
+                                        className="add-button"
+                                        onClick={() => addConstructor(c)}
+                                        disabled={selectedConstructors.some(
+                                            (s) =>
+                                                s &&
+                                                (s.teamId === c.teamId ||
+                                                    (s.team && c.team && s.team.teamName === c.team.teamName))
+                                        )}
+                                    >
+                                        +
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+
                     </div>
                 </section >
             </div >
