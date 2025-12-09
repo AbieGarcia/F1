@@ -1,3 +1,25 @@
+.stat-bar {
+  flex: 1;
+  background: #eee;
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.stat-fill {
+  background: #e71515;
+  height: 100%;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+
+}
+
+.mesajeFantasy {
+  align-self: center;
+  color: #2C2C2C;
+  position: relative;
+}
+
 .letrero {
   height: 10px;
 }
@@ -15,10 +37,12 @@
 
 
 }
+
 .add-button-driver {
   height: 50px;
   width: 80%;
-  align-items: center;}
+  align-items: center;
+}
 
 .buscador {
   height: 50px;
@@ -95,6 +119,7 @@
 
 .selector-grid {
   width: 36%;
+  height: 100px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 110px;
@@ -140,6 +165,7 @@
   flex: 1;
   display: flex;
   gap: 20px;
+  height: 100vh;
 }
 
 .panel {
@@ -149,7 +175,8 @@
   padding: 12px;
   display: flex;
   flex-direction: column;
-  min-height: 420px;
+  min-height: 680px;
+
 }
 
 .drivers-panel {
@@ -159,7 +186,8 @@
 
 .constructors-panel {
   width: 48%;
-  height: 12%}
+  height: 12%
+}
 
 .panel-header {
   display: flex;

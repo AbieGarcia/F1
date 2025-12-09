@@ -50,8 +50,8 @@ function Settings() {
                     <img src={redbull_theme} className="theme-card" onClick={() => cambiarTema("redbull")}></img>
                     <img src={mclaren_theme} className="theme-card" onClick={() => cambiarTema("mclaren")}></img>
                     <img src={mercedes_theme} className="theme-card" onClick={() => cambiarTema("mercedes")}></img>
-                    <button className="default-btn" onClick={() => cambiarTema("default")}>default</button>
                 </div>
+                <button className="default-btn" onClick={() => cambiarTema("default")}>default</button>
                 <hr></hr>
             </div>
         </div>
