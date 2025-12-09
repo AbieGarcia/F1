@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import "./Fantasy.css";
+import { supabase } from "./lib/supabaseClient";
+import { UserContext } from "./UserContext";
+import { useContext } from "react";
 
 import PIA from "./assets/drivers/OscarPiastri.png";
 import VER from "./assets/drivers/Verstappen.png";
@@ -46,10 +49,15 @@ import sauber_car from "./assets/cars/sauber_car.png";
 import williams_car from "./assets/cars/williams_car.png";
 
 function Fantasy() {
+
+    const { usuarioLogeado } = useContext(UserContext);
+
     const [drivers, setDrivers] = useState([]);
     const [constructors, setConstructors] = useState([]);
     const [query, setQuery] = useState("");
     const [query_constructors, setQueryConstructors] = useState("");
+    const [teamName, setTeamName] = useState('');
+    const [mensaje, setMensaje] = useState('');
 
     const [selectedDrivers, setSelectedDrivers] = useState([null, null, null, null, null]);
     const [selectedConstructors, setSelectedConstructors] = useState([null, null]);
@@ -184,6 +192,44 @@ function Fantasy() {
         fetchConstructors();
     }, []);
 
+    const saveTeam = async () => {
+        const { data, error } = await supabase
+            .from("Teams")
+            .insert([
+                {
+                    user_id: usuarioLogeado.id,
+                    team_name: teamName,
+                    driver1: `${selectedDrivers[0].name} ${selectedDrivers[0].surname}`,
+                    driver2: `${selectedDrivers[1].name} ${selectedDrivers[1].surname}`,
+                    driver3: `${selectedDrivers[2].name} ${selectedDrivers[2].surname}`,
+                    driver4: `${selectedDrivers[3].name} ${selectedDrivers[3].surname}`,
+                    driver5: `${selectedDrivers[4].name} ${selectedDrivers[4].surname}`,
+                    constructor1: selectedConstructors[0].team.teamName,
+                    constructor2: selectedConstructors[1].team.teamName,
+                },
+            ]);
+
+        if (error) {
+            setMensaje("Error al guardar equipo");
+        } else {
+            setMensaje("Equipo guardado correctamente");
+        }
+    };
+
+    const verificarCampos = async () => {
+        if (usuarioLogeado) {
+
+            if (teamName && selectedDrivers.length == 5 && !selectedDrivers.includes(null) && selectedConstructors.length == 2 && !selectedConstructors.includes(null)) {
+                await saveTeam(); // Esperamos a que termine
+            } else {
+                setMensaje("Por favor, llena todos los campos");
+            }
+        } else {
+            setMensaje("Por favor, inicia sesión para guardar");
+        }
+    };
+
+
     useEffect(() => {
         setTotalCost(calculateTotalCost(selectedDrivers, selectedConstructors));
     }, [selectedDrivers, selectedConstructors]);
@@ -244,7 +290,6 @@ function Fantasy() {
         });
     }
 
-
     function calculateTotalCost(drivers, constructors) {
         let total = 0;
 
@@ -264,24 +309,36 @@ function Fantasy() {
     }
 
 
-
     return (
-        <div className="body">
+        <div className="body" id="fantasybd">
             <div className="fantasy-banner">
                 <h1 className="title">Fantasy</h1>
             </div>
+
+            {mensaje && <p className='mesajeFantasy'>{mensaje}</p>}
 
             <div className="controls">
                 <div className="cost-cap">
 
                     <strong>Remaining:</strong>{" "}
                     {(COST_CAP - totalCost).toFixed(1)}M
+                    <div className="stat-bar">
+                        <div
+                            className="stat-fill"
+                            style={{ width: `${((COST_CAP - totalCost) / COST_CAP) * 100}%` }}
+                        ></div>
+                    </div>
                 </div>
 
                 <input
                     className="team-name"
                     placeholder="Enter team name..."
+                    type="text"
+                    value={teamName}
+                    onChange={(e) => setTeamName(e.target.value)}
                 />
+
+                <button onClick={verificarCampos}>Add Team</button>
             </div>
 
             <div className="fantasy-main">

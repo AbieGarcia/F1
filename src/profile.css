@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     background-color: #F3EDF7;
-    min-height: 100vh;
+    height: 100vh;
     position: absolute;
     top: 0;
     width: 20vw;
@@ -126,7 +126,7 @@
 
 .theme-card {
     transition: all 0.3s ease;
-
+    margin-left: -50px;
 }
 
 .theme-card:hover {
@@ -148,6 +148,45 @@
 }
 
 .default-btn {
-    margin-left: 25%;
+    margin-left: 50%;
     margin-top: 25px;
+}
+
+/*    My teams   */
+.mesajeTeams {
+    align-self: center;
+}
+
+.cont-teams {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.team-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fd7d79;
+    border-radius: 15px;
+    padding: 15px;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+    margin-right: 15px;
+
+}
+
+.t-name {
+    background-color: #ffffff;
+    color: #202020;
+    border-radius: 10px;
+    padding-left: 20px;
+}
+
+.t-drivers {
+    margin-top: -35px;
+}
+
+.t-constructors {
+    margin-top: -2px;
+    font-size: 20px;
 }

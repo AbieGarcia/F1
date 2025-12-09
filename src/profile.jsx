@@ -1,14 +1,22 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
 import { NavLink } from 'react-router-dom';
 
 
 import './App.css';
 import './profile.css';
+import { supabase } from "./lib/supabaseClient";
 
 function Profile() {
 
+    const [mensaje, setMensaje] = useState("");
+    const [teams, setTeams] = useState([]);
     const { usuarioLogeado } = useContext(UserContext);
+    useEffect(() => {
+        if (usuarioLogeado) {
+            getTeams();
+        }
+    }, [usuarioLogeado]);
 
     if (!usuarioLogeado) {
         return (
@@ -17,6 +25,24 @@ function Profile() {
             </div>
         )
     }
+
+    const getTeams = async () => {
+        const { data, error } = await supabase
+            .from("Teams")
+            .select("*")
+            .eq("user_id", usuarioLogeado.id);
+
+        if (error) setMensaje("Error al buscar");
+        else {
+            if (data.length > 0) {
+                setTeams(data);
+            } else {
+                setMensaje("No hay equipos guardados");
+            }
+        }
+    };
+
+
 
     return (
         <div className='body'>
@@ -32,6 +58,23 @@ function Profile() {
                     <p>Name: {usuarioLogeado.name}</p>
                     <p>Favorite team: {usuarioLogeado.team}</p>
                     <p>My teams: </p>
+                    {mensaje && <p className='mesajeTeams'>{mensaje}</p>}
+                    <div className="cont-teams">
+                        {teams.map((team) => (
+                            <div key={team.id} className="team-card">
+                                <h3 className="t-name">{team.team_name}</h3>
+                                <ul className="t-drivers">
+                                    <li>{team.driver1}</li>
+                                    <li>{team.driver2}</li>
+                                    <li>{team.driver3}</li>
+                                    <li>{team.driver4}</li>
+                                    <li>{team.driver5}</li>
+                                </ul>
+                                <h5 className="t-constructors">Constructors: {team.constructor1}, {team.constructor2}</h5>
+
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
