@@ -81,6 +81,7 @@ function App() {
           <NavLink to="/login" className={({ isActive }) => isActive ? `nav-link active ${usuarioLogeado?.theme ?? 'default'}` : `nav-link ${usuarioLogeado?.theme ?? 'default'}`} >LOG IN</NavLink>
           <NavLink to="/profile" ><img className='settingIMG' src={themeAssets[usuarioLogeado?.theme ?? 'default'].settings}></img></NavLink>
         </div>
+
       </div>
       <UserContext.Provider value={{ usuarioLogeado, setUsuarioLogeado }}>
         <Routes>

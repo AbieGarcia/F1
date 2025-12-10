@@ -177,3 +177,39 @@
 .settingIMG {
   width: 70%;
 }
+
+.info-cartas {
+  display: flex;
+  flex-direction: column;
+}
+
+/*_______________________________________*/
+
+@media (max-width: 768px) {
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .LogoF1 {
+    height: 36px;
+    margin-bottom: 8px;
+  }
+
+  .menu {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    padding: 4px;
+  }
+
+  .title {
+    font-size: 180%;
+  }
+}

@@ -1,3 +1,14 @@
+.banner-value {
+  padding-top: 2%;
+  align-items: center;
+  padding-left: 8%;
+}
+
+.constructor-value {
+  display: flex;
+  flex-direction: row;
+}
+
 .stat-bar {
   flex: 1;
   background: #eee;
