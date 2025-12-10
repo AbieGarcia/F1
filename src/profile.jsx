@@ -12,6 +12,7 @@ function Profile() {
     const [mensaje, setMensaje] = useState("");
     const [teams, setTeams] = useState([]);
     const { usuarioLogeado } = useContext(UserContext);
+
     useEffect(() => {
         if (usuarioLogeado) {
             getTeams();
