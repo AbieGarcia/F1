@@ -435,6 +435,7 @@ function Fantasy() {
                     <div className="panel constructors-panel">
                         <div className="panel-header">
                             <h3 className="letrero">Constructors</h3>
+
                         </div>
 
                         <div className="buscador">
@@ -454,18 +455,22 @@ function Fantasy() {
                                         alt={c.teamName ?? c.team?.teamName ?? "team"}
                                     />
                                     <div className="constructor-name">{c.team?.teamName ?? c.teamName}</div>
-                                    <button
-                                        className="add-button"
-                                        onClick={() => addConstructor(c)}
-                                        disabled={selectedConstructors.some(
-                                            (s) =>
-                                                s &&
-                                                (s.teamId === c.teamId ||
-                                                    (s.team && c.team && s.team.teamName === c.team.teamName))
-                                        )}
-                                    >
-                                        +
-                                    </button>
+
+                                    <div className="constructor-value">
+                                        <button
+
+                                            onClick={() => addConstructor(c)}
+                                            disabled={selectedConstructors.some(
+                                                (s) =>
+                                                    s &&
+                                                    (s.teamId === c.teamId ||
+                                                        (s.team && c.team && s.team.teamName === c.team.teamName))
+                                            )}
+                                        >
+                                            +
+                                        </button>
+                                        <div className="banner-value">{valor_constructors[c.teamId]} {"M"}</div>
+                                    </div>
                                 </div>
                             ))}
                         </div>

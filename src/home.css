@@ -33,6 +33,14 @@
     width: 400px;
 }
 
+.tabla-home {
+    width: 85%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: block;
+}
+
+#calendar,
 #about {
     width: 300px;
     align-self: center;
@@ -65,12 +73,10 @@
     position: relative;
 }
 
-.pcard {
-    font-size: 11pt;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-top: -5%;
-
+.imgcard {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
 
 .title-card {
