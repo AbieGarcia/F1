@@ -21,7 +21,6 @@
 .home {
     display: flex;
     flex-direction: column;
-    gap: 5%;
 }
 
 .information {
@@ -40,7 +39,7 @@
     display: block;
 }
 
-#calendar,
+
 #about {
     width: 300px;
     align-self: center;
@@ -51,6 +50,7 @@
     flex-direction: row;
     gap: 5%;
     align-self: center;
+    margin-left: 5%;
 }
 
 .paragraph {
@@ -59,6 +59,13 @@
     align-self: center;
     margin-top: 1%;
     color: black;
+}
+
+.pcard {
+    margin-left: 5%;
+    margin-right: 5%;
+
+    text-align: justify;
 }
 
 .info {
@@ -83,22 +90,25 @@
 .cardh {
     background-color: black;
     color: white;
-    width: 40%;
+    width: 50%;
+    height: 100%;
     max-width: 350px;
-    padding: 15px;
     border-radius: 10px;
+    position: relative;
 }
 
 .imgcard {
     width: 100%;
     height: auto;
     border-radius: 8px;
+    position: absolute;
+    top: 0;
 }
 
 .title-card {
     font-size: 14pt;
     padding-left: 2%;
-    margin-top: 30%;
+    margin-top: 60%;
     padding-right: 2%;
 }
 
