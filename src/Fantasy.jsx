@@ -220,12 +220,12 @@ function Fantasy() {
         if (usuarioLogeado) {
 
             if (teamName && selectedDrivers.length == 5 && !selectedDrivers.includes(null) && selectedConstructors.length == 2 && !selectedConstructors.includes(null)) {
-                await saveTeam(); // Esperamos a que termine
+                await saveTeam(); 
             } else {
-                setMensaje("Por favor, llena todos los campos");
+                setMensaje("Please fill all fields");
             }
         } else {
-            setMensaje("Por favor, inicia sesión para guardar");
+            setMensaje("Please log in to save");
         }
     };
 
@@ -254,10 +254,6 @@ function Fantasy() {
         if (empty === -1) return;
 
         const potentialCost = totalCost + (valor_drivers[d.imgKey] || 0);
-        if (potentialCost > COST_CAP) {
-            alert("You don't have enough budget for this driver!");
-            return;
-        }
 
         setSelectedDrivers((arr) => {
             const copy = [...arr];
