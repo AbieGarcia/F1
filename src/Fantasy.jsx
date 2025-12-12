@@ -274,11 +274,6 @@ function Fantasy() {
 
         const potentialCost = totalCost + (valor_constructors[c.teamId] || 0);
 
-        if (potentialCost > COST_CAP) {
-            alert("Not enough budget for this constructor!");
-            return;
-        }
-
         setSelectedConstructors((arr) => {
             const copy = [...arr];
             copy[empty] = c;
