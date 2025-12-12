@@ -12,7 +12,7 @@ import STR from './assets/drivers/Stroll.png';
 import ANT from './assets/drivers/Antonelli.png';
 import RUS from './assets/drivers/Russell.png';
 import GAS from './assets/drivers/Gasly.png';
-import COL from './assets/drivers/ColLapinto.png';
+import COL from './assets/drivers/Collapinto.png';
 import SAI from './assets/drivers/Sainz.png';
 import ALB from './assets/drivers/Albon.png';
 import OCO from './assets/drivers/Ocon.png';
