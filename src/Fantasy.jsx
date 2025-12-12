@@ -210,9 +210,9 @@ function Fantasy() {
             ]);
 
         if (error) {
-            setMensaje("Error al guardar equipo");
+            setMensaje("Failed to save team");
         } else {
-            setMensaje("Equipo guardado correctamente");
+            setMensaje("Correctly saved team");
         }
     };
 
